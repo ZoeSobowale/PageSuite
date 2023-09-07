@@ -6,3 +6,20 @@ window.addEventListener('resize', function() {
         document.querySelector('header').style.fontSize = '2em';
     }
 });
+
+// Show header when scrolling down, and remove it when scrolling up
+let isScrolling = false;
+
+window.addEventListener('scroll', function() {
+    if (!isScrolling) {
+        window.requestAnimationFrame(function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.sticky-header').classList.add('scrolled');
+            } else {
+                document.querySelector('.sticky-header').classList.remove('scrolled');
+            }
+            isScrolling = false;
+        });
+        isScrolling = true;
+    }
+});

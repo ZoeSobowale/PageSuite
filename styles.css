@@ -1,3 +1,11 @@
+:root {
+    --primary: #e7e7e6;
+    --secondary: #90A7A2;
+    --accent: #900d34;
+    --light: #ffffff;;
+    --dark: #212121;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -22,22 +30,90 @@ header {
 }
 
 main {
-    background-color: #f8f8f8;
+    background-color: var(--primary);
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--accent);
+    color: var(--light);
     text-align: center;
 }
+
+.space {
+    height: 30px; 
+  }
 
 .sticky-header{
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--accent);
+    color: var(--light);
     padding: 10px 20px;
     z-index: 1000;
+}
+
+/* Set up a grid container with mixed column sizes */
+.grid-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0px;
+    height: 100%;
+}
+
+
+
+  #item-0 {
+    background-color: #5e9ab6;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 3;
+    grid-column-end: 2;
+    height: 40vh;
+    width: 15vw;
+  }
+
+  #item-1 {
+    background-color: #dde9bd;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-row-end: 3;
+    grid-column-end: 4;
+    height: 40vh;
+    width: 60vw;
+  }
+
+  #item-2 {
+    background-color: #e5e757;
+    grid-row-start: 1;
+    grid-column-start: 4;
+    grid-row-end: 2;
+    grid-column-end: 5;
+    height: 20vh;
+    width: 25vw;
+  }
+
+  #item-3 {
+    background-color: #9969b5;
+    grid-row-start: 2;
+    grid-column-start: 4;
+    grid-row-end: 3;
+    grid-column-end: 5;
+    height: 20vh;
+    width: 25vw;
+  }
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* Set a single column for smaller screens */
+    }
+
+    /* Add dashed border to the bottom of the articles */
+    .grid-container > article:not(:last-child) {
+        border-right: 0;
+        border-bottom: 2px dashed #ccc;
+    }
 }

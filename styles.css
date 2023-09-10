@@ -2,7 +2,7 @@
     --primary: #e7e7e6;
     --secondary: #90A7A2;
     --accent: #900d34;
-    --light: #ffffff;;
+    --light: #ffffff;
     --dark: #212121;
 }
 
@@ -15,7 +15,7 @@
 /* Set a base font size */
 body {
     font-size: 16px;
-    font-family: Arial, sans-serif;
+    font-family: 'Playfair Display';
 }
 
 /* Style header, main, and footer */
@@ -23,8 +23,19 @@ header, main, footer {
     padding: 20px;
 }
 
+h1{
+    color: var(--accent);
+    font-size: 1.75em;
+}
+
+h2 {
+ font-size: 2em;
+}
+
 /* Add some basic styles to make it look like a website */
 header {
+    font-size: 40px;
+    font-weight: bold;
     background-color: #333;
     color: #fff;
 }
@@ -40,7 +51,7 @@ footer {
 }
 
 .space {
-    height: 30px; 
+    height: 70px; 
   }
 
 .sticky-header{
@@ -56,64 +67,61 @@ footer {
 
 /* Set up a grid container with mixed column sizes */
 .grid-container {
+    background-color: var(--primary);
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 0px;
-    height: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
 }
 
+.grid-item {
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: left;
+}
 
+.grid-item img {
+    cursor: pointer;
+    max-width: 100%;
+    height: auto;
+}
 
-  #item-0 {
-    background-color: #5e9ab6;
-    grid-row-start: 1;
-    grid-column-start: 1;
-    grid-row-end: 3;
-    grid-column-end: 2;
-    height: 40vh;
-    width: 15vw;
-  }
+.read-more {
+    font-weight: bold; 
+    text-decoration: none; 
+    color: var(--accent); 
+    
+}
 
-  #item-1 {
-    background-color: #dde9bd;
-    grid-row-start: 1;
-    grid-column-start: 2;
-    grid-row-end: 3;
-    grid-column-end: 4;
-    height: 40vh;
-    width: 60vw;
-  }
+.large {
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+}
 
-  #item-2 {
-    background-color: #e5e757;
-    grid-row-start: 1;
-    grid-column-start: 4;
-    grid-row-end: 2;
-    grid-column-end: 5;
-    height: 20vh;
-    width: 25vw;
-  }
+.medium {
+    grid-column-end: span 2;
+}
 
-  #item-3 {
-    background-color: #9969b5;
-    grid-row-start: 2;
-    grid-column-start: 4;
-    grid-row-end: 3;
-    grid-column-end: 5;
-    height: 20vh;
-    width: 25vw;
-  }
+.small {
+    /* Default size, no need for additional styling */
+}
 
-/* Media query for smaller screens */
 @media screen and (max-width: 768px) {
     .grid-container {
-        grid-template-columns: 1fr; /* Set a single column for smaller screens */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
 
-    /* Add dashed border to the bottom of the articles */
-    .grid-container > article:not(:last-child) {
-        border-right: 0;
-        border-bottom: 2px dashed #ccc;
+    .grid-item {
+        padding: 10px;
+    }
+
+    .large, .medium {
+        grid-column-end: span 1;
+        grid-row-end: span 1;
+    }
+    
+    .small {
+        grid-column-end: span 2;
+        grid-row-end: span 1;
     }
 }

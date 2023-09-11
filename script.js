@@ -7,19 +7,20 @@ window.addEventListener('resize', function() {
     }
 });
 
-// Show header when scrolling down, and remove it when scrolling up
-let isScrolling = false;
+window.addEventListener('load', function() {
+    const gridItems = document.querySelectorAll('.grid-item');
 
-window.addEventListener('scroll', function() {
-    if (!isScrolling) {
-        window.requestAnimationFrame(function() {
-            if (window.scrollY > 50) {
-                document.querySelector('.sticky-header').classList.add('scrolled');
-            } else {
-                document.querySelector('.sticky-header').classList.remove('scrolled');
-            }
-            isScrolling = false;
-        });
-        isScrolling = true;
-    }
+    gridItems.forEach(function(item) {
+        const content = item.querySelector('article');
+        const img = item.querySelector('img');
+
+        if (content && img) {
+            const contentHeight = content.offsetHeight;
+            const imgHeight = img.offsetHeight;
+
+            const maxHeight = Math.max(contentHeight, imgHeight);
+
+            item.style.height = maxHeight + 'px';
+        }
+    });
 });

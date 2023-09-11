@@ -75,20 +75,23 @@ footer {
 }
 
 .grid-item {
-    width: calc(33.33% - 20px); /* 33.33% width with 20px gap */
+    flex: 1 0 30%; /* Allow items to grow, but not shrink. Set a minimum width of 30% */
+    position: relative;
+    padding: 20px;
+    text-align: left;
+    border: 1px dashed #ccc;
     margin-bottom: 20px; /* Add some space between items */
     box-sizing: border-box; /* Include padding and border in element's total width and height */
-    border: 1px dashed #ccc;
-    padding: 20px;
 }
 
-.grid-img img {
+.grid-item img {
+    cursor: pointer;
     max-width: 100%;
     height: auto;
-    display: block; /* This ensures that the image won't cause spacing issues */
-    margin: 0 auto 10px; /* Centers the image and adds some space below */
+    align-self: center;
+    margin-bottom: 10px;
+    max-height: 200px; /* Adjust this value to control image height */
 }
-
 
 .read-more {
     font-weight: bold; 
@@ -98,6 +101,9 @@ footer {
 
 @media screen and (max-width: 768px) {
     .grid-item {
-        width: calc(50% - 20px); /* 50% width with 20px gap on smaller screens */
+        min-width: 100px;
+        flex: 1 0 100%; /* On smaller screens, set minimum width to 100% */
     }
 }
+
+

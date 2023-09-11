@@ -75,23 +75,21 @@ footer {
 }
 
 .grid-item {
-    flex: 1 0 30%; /* Allow items to grow, but not shrink. Set a minimum width of 30% */
-    position: relative;
-    padding: 20px;
-    text-align: left;
-    border: 1px dashed #ccc;
+    width: calc(33.33% - 20px); /* 33.33% width with 20px gap */
     margin-bottom: 20px; /* Add some space between items */
     box-sizing: border-box; /* Include padding and border in element's total width and height */
+    border: 1px dashed #ccc;
+    padding: 20px;
 }
 
-.grid-item img {
-    cursor: pointer;
+.grid-img img {
     max-width: 100%;
     height: auto;
-    align-self: center;
-    margin-bottom: 10px;
-    max-height: 200px; /* Adjust this value to control image height */
+    display: block; /* This ensures that the image won't cause spacing issues */
+    padding: 10px;
+    margin: 0 auto 10px; /* Centers the image and adds some space below */
 }
+
 
 .read-more {
     font-weight: bold; 
@@ -99,10 +97,49 @@ footer {
     color: var(--accent); 
 }
 
-@media screen and (max-width: 768px) {
+
+
+@media screen and (max-width: 1229px) {
     .grid-item {
-        min-width: 100px;
-        flex: 1 0 100%; /* On smaller screens, set minimum width to 100% */
+        width: calc(50% - 20px); /* 50% width with 20px gap on smaller screens */
+    }
+    .grid-item.side-content {
+        display: flex;
+        flex-direction: row; /* Stack items vertically */
+    }
+
+    .grid-item.side-content article {
+        width:100%;
+        padding: 0 10px;
+        margin-bottom: 20px; /* Add space between stacked articles */
+    }
+}
+
+
+@media screen and (min-width: 1230px) {
+    .grid-container {
+        display: flex;
+        flex-wrap: nowrap; 
+    }
+
+    .grid-item {
+        width: auto;
+        flex: 1; 
+        margin: 0; 
+        border: none; 
+    }
+
+    .grid-img {
+        text-align: center;
+    }
+
+    .side-top{  
+        display: none;
+    }
+
+    .side-content {
+        width: 100%; 
+        margin: 0; 
     }
 }
 
